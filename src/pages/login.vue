@@ -2,6 +2,8 @@
 import type { FormInst, FormRules } from 'naive-ui'
 import { formRules } from '~/utils/rules'
 
+const { theme } = useConfigStore()
+
 const formRef = ref<HTMLElement & FormInst>()
 const model = reactive({
   userName: 'Soybean',
@@ -23,7 +25,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div class="flex-center wh-full relative" bg="#18a00017">
+  <div class="relative wh-full flex-center" bg="#B6C9FC">
     <n-card :bordered="false" size="large" class="z-4 rounded-20px shadow-sm !w-auto">
       <div class="w-300px sm:w-360px">
         <header class="flex-y-center justify-between">
@@ -61,7 +63,7 @@ async function handleSubmit() {
       </div>
     </n-card>
   </div>
-  <LoginBg theme-color="#18a058" />
+  <LoginBg :theme-color="theme.defaultColor" />
 </template>
 
 <style scoped></style>
