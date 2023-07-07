@@ -6,6 +6,7 @@ export const useConfigStore = defineStore('config', () => {
    */
   const theme = ref({
     defaultColor: '#165dff',
+    hoverColor: '#0044ff',
   })
 
   return {

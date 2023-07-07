@@ -9,6 +9,8 @@ const config = useConfigStore()
 const themeOverrides: GlobalThemeOverrides = {
   common: {
     primaryColor: config.theme.defaultColor,
+    primaryColorPressed: config.theme.defaultColor,
+    primaryColorHover: config.theme.hoverColor,
   },
 }
 </script>
