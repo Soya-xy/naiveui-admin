@@ -16,6 +16,7 @@ router.beforeEach((to, from) => {
 router.afterEach(() => {
   NProgress.done()
 })
+
 export function install(app: App) {
   app.use(router)
 }

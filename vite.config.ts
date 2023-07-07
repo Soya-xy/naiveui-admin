@@ -4,6 +4,8 @@ import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
 import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+
 import AutoImport from 'unplugin-auto-import/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import Unocss from 'unocss/vite'
@@ -43,6 +45,14 @@ export default defineConfig({
         'vue-router',
         '@vueuse/head',
         '@vueuse/core',
+        {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar',
+          ],
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       dirs: [
@@ -54,11 +64,10 @@ export default defineConfig({
 
     // https://github.com/antfu/unplugin-vue-components
     Components({
-      // allow auto load markdown components under `./src/components/`
-      extensions: ['vue', 'md'],
-      // allow auto import and register components used in markdown
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/components.d.ts',
+      resolvers: [
+        NaiveUiResolver(),
+      ],
     }),
 
     // https://github.com/antfu/unocss

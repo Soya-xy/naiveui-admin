@@ -1,11 +1,10 @@
+<script setup lang="ts">
+const theme = useDark()
+console.log('🚀 ~ file: default.vue:3 ~ theme:', theme)
+</script>
+
 <template>
-  <main
-    px-4 py-10
-    text="center gray-700 dark:gray-200"
-  >
+  <n-config-provider :theme="theme" :theme-overrides="{ common: { fontWeightStrong: '600' } }">
     <RouterView />
-    <div mx-auto mt-5 text-center text-sm opacity-50>
-      [Default Layout]
-    </div>
-  </main>
+  </n-config-provider>
 </template>
