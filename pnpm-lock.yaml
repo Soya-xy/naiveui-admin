@@ -1,10 +1,13 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@alova/adapter-axios':
+    specifier: ^1.1.1
+    version: 1.1.1
   '@unhead/vue':
     specifier: ^1.1.30
     version: 1.1.30(vue@3.3.4)
@@ -17,6 +20,9 @@ dependencies:
   '@vueuse/head':
     specifier: ^1.1.26
     version: 1.1.26(vue@3.3.4)
+  alova:
+    specifier: ^2.9.1
+    version: 2.9.1
   nprogress:
     specifier: ^0.2.0
     version: 0.2.0
@@ -227,6 +233,10 @@ packages:
       '@algolia/logger-common': 4.18.0
       '@algolia/requester-common': 4.18.0
     dev: true
+
+  /@alova/adapter-axios@1.1.1:
+    resolution: {integrity: sha512-boE8Sd7KCLP3O0CSgJK0BHqAynLUTTKTHWD74laGQo6E0OA6LS6AuiR09Qvgbm+EV3vXwqWoAxzHh47B+FyR3g==}
+    dev: false
 
   /@ampproject/remapping@2.2.1:
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
@@ -1496,7 +1506,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.1
+      semver: 7.5.3
       tsutils: 3.21.0(typescript@5.1.6)
       typescript: 5.1.6
     transitivePeerDependencies:
@@ -1537,7 +1547,7 @@ packages:
       '@typescript-eslint/typescript-estree': 5.61.0(typescript@5.1.6)
       eslint: 8.44.0
       eslint-scope: 5.1.1
-      semver: 7.5.1
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -2586,6 +2596,11 @@ packages:
       '@algolia/requester-node-http': 4.18.0
       '@algolia/transporter': 4.18.0
     dev: true
+
+  /alova@2.9.1:
+    resolution: {integrity: sha512-u2efRvkO6o+UI6vHYVHmrkaINOAG3pFgyrwq5VSF39PAolvUkkbnnBNac0cffX7her2QjGpa7WnKBgdsasDH7Q==}
+    engines: {node: '>= 0.12.0'}
+    dev: false
 
   /ansi-escapes@4.3.2:
     resolution: {integrity: sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==}
@@ -7760,7 +7775,7 @@ packages:
       espree: 9.5.2
       esquery: 1.5.0
       lodash: 4.17.21
-      semver: 7.5.1
+      semver: 7.5.3
     transitivePeerDependencies:
       - supports-color
     dev: true
