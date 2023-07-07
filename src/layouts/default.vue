@@ -1,10 +1,14 @@
 <script setup lang="ts">
-const theme = useDark()
-console.log('🚀 ~ file: default.vue:3 ~ theme:', theme)
+import { darkTheme } from 'naive-ui'
+
+const theme = ref(useDark().value ? darkTheme : undefined)
+console.log('🚀 ~ file: default.vue:5 ~ theme:', theme)
 </script>
 
 <template>
-  <n-config-provider :theme="theme" :theme-overrides="{ common: { fontWeightStrong: '600' } }">
-    <RouterView />
+  <n-config-provider :theme="theme" h-full>
+    <NaiveProvider>
+      <RouterView />
+    </NaiveProvider>
   </n-config-provider>
 </template>
