@@ -1,12 +1,21 @@
 <script setup lang='ts'>
+import { NIcon } from 'naive-ui'
 import type { SideProps } from './types'
 
 const props = withDefaults(defineProps<SideProps>(), {
+  isCollapsed: false,
   sideWidth: 220,
   headerHeight: '4rem',
 })
 
-const activeKey = ref<string | null>(null)
+const activeKey = ref<string | null>(
+
+)
+function renderIcon(icon: string) {
+  return () => h(NIcon, {
+    class: icon,
+  })
+}
 
 const menuOptions = [
   {
@@ -26,6 +35,7 @@ const menuOptions = [
   {
     label: '1973年的弹珠玩具',
     key: 'pinball-1973',
+    icon: renderIcon('i-mdi:ab-testing'),
     children: [
       {
         label: '鼠',
@@ -293,7 +303,10 @@ const menuOptions = [
         height: props.headerHeight,
       }"
     >
-      后台管理平台
+      <p v-if="!isCollapsed">
+        后台管理平台
+      </p>
+      <i v-else i-mdi:medal-outline icon-btn />
     </div>
     <n-scrollbar
       :style="{

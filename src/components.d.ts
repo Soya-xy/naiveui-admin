@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AdminLayoutsHeader: typeof import('./components/admin-layouts/Header.vue')['default']
     AdminLayoutsSide: typeof import('./components/admin-layouts/Side.vue')['default']
     CornerBottom: typeof import('./components/login-bg/components/corner-bottom.vue')['default']
     CornerTop: typeof import('./components/login-bg/components/corner-top.vue')['default']
@@ -24,6 +25,7 @@ declare module 'vue' {
     NFormItem: typeof import('naive-ui')['NFormItem']
     NGradientText: typeof import('naive-ui')['NGradientText']
     NH2: typeof import('naive-ui')['NH2']
+    NIcon: typeof import('naive-ui')['NIcon']
     NInput: typeof import('naive-ui')['NInput']
     NLayout: typeof import('naive-ui')['NLayout']
     NLayoutContent: typeof import('naive-ui')['NLayoutContent']

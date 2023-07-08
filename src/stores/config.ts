@@ -13,7 +13,12 @@ export const useConfigStore = defineStore('config', () => {
     tabHeight: '40px',
   })
 
+  const config = ref({
+    collapsedSide: false,
+  })
+
   return {
+    config,
     theme,
     layout,
   }

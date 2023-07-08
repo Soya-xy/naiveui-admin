@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { layout } = useConfigStore()
+const { layout, config } = useConfigStore()
 
 const panels = ref(['1, 2, 31, 2, 31, 2, 31, 2, 3ffff', 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
 const name = ref(1)
@@ -20,15 +20,23 @@ const height = computed(() => {
     <n-layout has-sider>
       <n-layout-sider
         bordered
-        :width="220"
+        :width="layout.sideWidth"
         :collapsed-width="60"
         :native-scrollbar="false"
+        collapse-mode="width"
+        :collapsed="config.collapsedSide"
       >
-        <AdminLayoutsSide :side-width="layout.sideWidth" />
+        <AdminLayoutsSide
+          :side-width="config.collapsedSide ? 60 : layout.sideWidth"
+          :is-collapsed="config.collapsedSide"
+        />
       </n-layout-sider>
       <n-layout>
-        <n-layout-header :style="{ height: layout.headerHeight }" bordered>
-          颐和园路
+        <n-layout-header
+          :style="{ height: layout.headerHeight }"
+          bordered flex-y-center
+        >
+          <AdminLayoutsHeader />
         </n-layout-header>
         <n-tabs
           v-model:value="name"

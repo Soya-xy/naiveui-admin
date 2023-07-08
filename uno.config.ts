@@ -10,7 +10,11 @@ import {
 } from 'unocss'
 
 export default defineConfig({
+  safelist: [
+    'i-mdi:ab-testing',
+  ],
   shortcuts: {
+    'icon-btn': 'hover:text-blue-600 cursor-pointer',
     'wh-full': 'w-full h-full',
     'flex-center': 'flex justify-center items-center',
     'flex-col-center': 'flex-center flex-col',
