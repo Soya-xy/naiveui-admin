@@ -1,4 +1,13 @@
 <script setup lang='ts'>
+function settime() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(1)
+    }, 5000)
+  })
+}
+
+await settime()
 </script>
 
 <template>

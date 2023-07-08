@@ -1,5 +1,7 @@
 <script setup lang='ts'>
+import type { MenuGroupOption, MenuOption } from 'naive-ui'
 import { NIcon } from 'naive-ui'
+import { RouterLink } from 'vue-router'
 import type { SideProps } from './types'
 
 const props = withDefaults(defineProps<SideProps>(), {
@@ -8,287 +10,45 @@ const props = withDefaults(defineProps<SideProps>(), {
   headerHeight: '4rem',
 })
 
-const activeKey = ref<string | null>(
+const activeKey = ref<string | null>('index')
 
-)
 function renderIcon(icon: string) {
   return () => h(NIcon, {
     class: icon,
   })
 }
 
-const menuOptions = [
+const menuOptions = ref<Array<MenuOption | MenuGroupOption>>([
   {
     label: () =>
       h(
-        'a',
+        RouterLink,
         {
-          href: 'https://baike.baidu.com/item/%E4%B8%94%E5%90%AC%E9%A3%8E%E5%90%9F',
-          target: '_blank',
-          rel: 'noopenner noreferrer',
+          to: {
+            name: 'index',
+
+          },
         },
-        '且听风吟',
+        { default: () => 'APP管理' },
       ),
-    key: 'hear-the-wind-sing',
-
+    icon: renderIcon('i-mdi:android-head'),
+    key: 'index',
   },
   {
-    label: '1973年的弹珠玩具',
-    key: 'pinball-1973',
-    icon: renderIcon('i-mdi:ab-testing'),
-    children: [
-      {
-        label: '鼠',
-        key: 'rat',
-      },
-    ],
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: {
+            name: 'login',
+          },
+        },
+        { default: () => '登录' },
+      ),
+    icon: renderIcon('i-mdi:android-head'),
+    key: 'login',
   },
-  {
-    label: '寻羊冒险记',
-    key: 'a-wild-sheep-chase',
-  },
-  {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-
-          },
-        ],
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky',
-          },
-        ],
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
-  }, {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-
-          },
-        ],
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky',
-          },
-        ],
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
-  }, {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-
-          },
-        ],
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky',
-          },
-        ],
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
-  }, {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-
-          },
-        ],
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky',
-          },
-        ],
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
-  }, {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-
-          },
-        ],
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky',
-          },
-        ],
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
-  },
-]
+])
 </script>
 
 <template>
@@ -298,8 +58,7 @@ const menuOptions = [
     }"
   >
     <div
-      class="bb-border flex items-center justify-center"
-      :style="{
+      class="bb-border flex items-center justify-center" :style="{
         height: props.headerHeight,
       }"
     >
@@ -311,15 +70,9 @@ const menuOptions = [
     <n-scrollbar
       :style="{
         'max-height': `calc(100vh - ${props.headerHeight})`,
-      }"
-      trigger="hover" :size="30"
+      }" trigger="hover" :size="30"
     >
-      <n-menu
-        :value="activeKey"
-        :collapsed-width="props.sideWidth"
-        :options="menuOptions"
-        :indent="18"
-      />
+      <n-menu :value="activeKey" :collapsed-width="props.sideWidth" :options="menuOptions" :indent="18" />
     </n-scrollbar>
   </div>
 </template>

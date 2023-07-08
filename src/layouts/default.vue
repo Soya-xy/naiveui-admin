@@ -11,20 +11,15 @@ const height = computed(() => {
 
 <template>
   <n-layout
-    :native-scrollbar="false"
-    :scrollbar-props="{
+    :native-scrollbar="false" :scrollbar-props="{
       size: 1,
       trigger: 'none',
     }"
   >
     <n-layout has-sider>
       <n-layout-sider
-        bordered
-        :width="layout.sideWidth"
-        :collapsed-width="60"
-        :native-scrollbar="false"
-        collapse-mode="width"
-        :collapsed="config.collapsedSide"
+        bordered :width="layout.sideWidth" :collapsed-width="60" :native-scrollbar="false"
+        collapse-mode="width" :collapsed="config.collapsedSide"
       >
         <AdminLayoutsSide
           :side-width="config.collapsedSide ? 60 : layout.sideWidth"
@@ -32,54 +27,45 @@ const height = computed(() => {
         />
       </n-layout-sider>
       <n-layout>
-        <n-layout-header
-          :style="{ height: layout.headerHeight }"
-          flex-y-center
-        >
+        <n-layout-header :style="{ height: layout.headerHeight }" flex-y-center>
           <AdminLayoutsHeader />
         </n-layout-header>
         <n-tabs
-          v-model:value="name"
-          type="card"
-          closable
-          :tab-style="{
+          v-model:value="name" type="card" closable :tab-style="{
             'height': layout.tabHeight,
             'min-width': '80px',
             'background-color': dark ? 'auto' : '#fff',
           }"
         >
-          <n-tab
-            v-for="panel in panels"
-            :key="panel"
-            :tab="panel.toString()"
-            :name="panel"
-          />
+          <n-tab v-for="panel in panels" :key="panel" :tab="panel.toString()" :name="panel" />
         </n-tabs>
         <n-layout-content
           :style="{
             'max-height': height,
             height,
-          }"
-          :native-scrollbar="false"
+          }" :native-scrollbar="false"
         >
-          <router-view v-slot="{ Component }">
-            <transition
-              name="fade-slide"
-              mode="out-in"
-              :appear="true"
-            >
-              <keep-alive>
-                <component
-                  :is="Component"
-                  class="flex-grow bg-#f6f9f8 p-16px transition duration-300 ease-in-out dark:bg-#101014"
-                />
-              </keep-alive>
-            </transition>
-          </router-view>
+          <Suspense>
+            <router-view v-slot="{ Component, route }">
+              <transition name="fade-slide" mode="out-in" :appear="true">
+                <keep-alive>
+                  <component
+                    :is="Component"
+                    :key="route.path"
+                    class="flex-grow bg-#f6f9f8 p-16px transition duration-300 ease-in-out dark:bg-#101014"
+                  />
+                </keep-alive>
+              </transition>
+            </router-view>
+            <template #fallback>
+              <div class="absolute-center">
+                <n-spin :show="true" size="large" />
+              </div>
+            </template>
+          </Suspense>
         </n-layout-content>
         <n-layout-footer
-          bordered
-          :style="{
+          bordered :style="{
             height: layout.footerHeight,
           }"
         >

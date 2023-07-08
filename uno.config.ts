@@ -11,7 +11,7 @@ import {
 
 export default defineConfig({
   safelist: [
-    'i-mdi:ab-testing',
+    'i-mdi:android-head',
   ],
   shortcuts: {
     'icon-btn': 'hover:text-blue-600 cursor-pointer',
