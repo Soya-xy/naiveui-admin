@@ -61,7 +61,20 @@ const height = computed(() => {
           }"
           :native-scrollbar="false"
         >
-          <RouterView />
+          <router-view v-slot="{ Component }">
+            <transition
+              name="fade-slide"
+              mode="out-in"
+              :appear="true"
+            >
+              <keep-alive>
+                <component
+                  :is="Component"
+                  class="flex-grow bg-#f6f9f8 p-16px transition duration-300 ease-in-out dark:bg-#101014"
+                />
+              </keep-alive>
+            </transition>
+          </router-view>
         </n-layout-content>
         <n-layout-footer
           bordered
