@@ -6,10 +6,16 @@ body,
   padding: 0;
 }
 
+
+.n-tabs-tab--active, .n-tabs-tab:hover{
+  background-color: #165dff17 !important;
+}
+
 html.dark {
   background: #18181C;
   color-scheme: dark;
 }
+
 
 #nprogress {
   pointer-events: none;

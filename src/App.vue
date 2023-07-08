@@ -6,7 +6,6 @@ const dark = useDark()
 const config = useConfigStore()
 
 const theme = computed(() => (dark.value ? darkTheme : null))
-// const theme = ref(useDark().value ? undefined : undefined)
 const themeOverrides: GlobalThemeOverrides = {
   common: {
     primaryColor: config.theme.defaultColor,

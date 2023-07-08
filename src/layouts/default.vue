@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { layout, config } = useConfigStore()
-
+const dark = useDark()
 const panels = ref(['1, 2, 31, 2, 31, 2, 31, 2, 3ffff', 4, 5, 6, 7, 4, 5, 6, 7, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
 const name = ref(1)
 
@@ -34,7 +34,7 @@ const height = computed(() => {
       <n-layout>
         <n-layout-header
           :style="{ height: layout.headerHeight }"
-          bordered flex-y-center
+          flex-y-center
         >
           <AdminLayoutsHeader />
         </n-layout-header>
@@ -42,16 +42,17 @@ const height = computed(() => {
           v-model:value="name"
           type="card"
           closable
-          tab-style="min-width: 80px;"
+          :tab-style="{
+            'height': layout.tabHeight,
+            'min-width': '80px',
+            'background-color': dark ? 'auto' : '#fff',
+          }"
         >
           <n-tab
             v-for="panel in panels"
             :key="panel"
             :tab="panel.toString()"
             :name="panel"
-            :style="{
-              height: layout.tabHeight,
-            }"
           />
         </n-tabs>
         <n-layout-content
