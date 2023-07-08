@@ -1,16 +1,21 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const useConfigStore = defineStore('config', () => {
-  /**
-   * Current name of the Config.
-   */
   const theme = ref({
     defaultColor: '#165dff',
     hoverColor: '#0044ff',
   })
 
+  const layout = ref({
+    sideWidth: 220,
+    headerHeight: '4rem',
+    footerHeight: '3rem',
+    tabHeight: '40px',
+  })
+
   return {
     theme,
+    layout,
   }
 })
 

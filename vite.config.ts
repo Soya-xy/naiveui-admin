@@ -95,6 +95,7 @@ export default ({ mode }: ConfigEnv) => {
       // https://github.com/antfu/unplugin-vue-components
       Components({
         dts: 'src/components.d.ts',
+        directoryAsNamespace: true,
         resolvers: [
           NaiveUiResolver(),
         ],

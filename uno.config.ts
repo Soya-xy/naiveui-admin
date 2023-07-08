@@ -45,6 +45,7 @@ export default defineConfig({
     'nowrap-hidden': 'whitespace-nowrap overflow-hidden',
     'ellipsis-text': 'nowrap-hidden text-ellipsis',
     'transition-base': 'transition-all duration-300 ease-in-out',
+    'bb-border': 'border-b border-solid border-[var(--n-border-color)]',
   },
   presets: [
     presetUno(),
