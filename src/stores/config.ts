@@ -1,7 +1,10 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 
+const dark = useDark()
+
 export const useConfigStore = defineStore('config', () => {
   const theme = ref({
+    isDark: dark.value,
     defaultColor: '#165dff',
     hoverColor: '#0044ff',
   })

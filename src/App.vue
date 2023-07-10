@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import type { GlobalThemeOverrides } from 'naive-ui'
 import { darkTheme } from 'naive-ui'
+import { storeToRefs } from 'pinia'
 
-const dark = useDark()
 const config = useConfigStore()
-
-const theme = computed(() => (dark.value ? darkTheme : null))
+const { theme: t } = storeToRefs(config)
+const theme = computed(() => (t.value.isDark ? darkTheme : null))
+watch(() => theme.value, () => {
+  console.log(theme.value)
+}, {
+  immediate: true,
+  deep: true,
+})
 const themeOverrides: GlobalThemeOverrides = {
   common: {
     primaryColor: config.theme.defaultColor,
