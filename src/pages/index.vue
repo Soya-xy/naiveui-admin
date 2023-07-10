@@ -1,13 +1,4 @@
 <script setup lang='ts'>
-function settime() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(1)
-    }, 5000)
-  })
-}
-
-await settime()
 </script>
 
 <template>
@@ -28,3 +19,8 @@ await settime()
     </n-card>
   </div>
 </template>
+
+<route lang="yaml">
+meta:
+  title: 首页
+</route>

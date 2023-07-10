@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AdminLayoutsHeader: typeof import('./components/admin-layouts/Header.vue')['default']
     AdminLayoutsSide: typeof import('./components/admin-layouts/Side.vue')['default']
+    AdminLayoutsTabs: typeof import('./components/admin-layouts/Tabs.vue')['default']
     CornerBottom: typeof import('./components/login-bg/components/corner-bottom.vue')['default']
     CornerTop: typeof import('./components/login-bg/components/corner-top.vue')['default']
     LoginBg: typeof import('./components/login-bg/index.vue')['default']

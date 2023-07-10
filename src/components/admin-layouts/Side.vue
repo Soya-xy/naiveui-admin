@@ -9,8 +9,8 @@ const props = withDefaults(defineProps<SideProps>(), {
   sideWidth: 220,
   headerHeight: '4rem',
 })
-
-const activeKey = ref<string | null>('index')
+const route = useRoute()
+const activeKey = computed(() => (route.name as string))
 
 function renderIcon(icon: string) {
   return () => h(NIcon, {
