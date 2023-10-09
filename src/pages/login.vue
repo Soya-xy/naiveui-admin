@@ -25,8 +25,8 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <div>
-    <div class="relative wh-full flex-center" bg="#B6C9FC">
+  <div wh-full>
+    <div class="wh-full flex-center" bg="#B6C9FC">
       <n-card :bordered="false" size="large" class="z-4 rounded-20px shadow-sm !w-auto">
         <div class="w-300px sm:w-360px">
           <header class="flex-y-center justify-between">
@@ -48,11 +48,7 @@ async function handleSubmit() {
                 </n-form-item>
                 <n-space :vertical="true" :size="24">
                   <n-button
-                    type="primary"
-                    size="large"
-                    :block="true"
-                    :round="true"
-                    :loading="loginLoading"
+                    type="primary" size="large" :block="true" :round="true" :loading="loginLoading"
                     @click="handleSubmit"
                   >
                     确定
@@ -68,9 +64,10 @@ async function handleSubmit() {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
 
-<!-- <route lang="yaml">
+<route lang="yaml">
 meta:
-  layout: 404
-</route> -->
+  layout: empty
+</route>

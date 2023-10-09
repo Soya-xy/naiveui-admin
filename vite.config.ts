@@ -11,7 +11,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import Unocss from 'unocss/vite'
 
-// @ts-expect-error failed to resolve types
 import VueMacros from 'unplugin-vue-macros/vite'
 import WebfontDownload from 'vite-plugin-webfont-dl'
 

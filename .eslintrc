@@ -1,9 +1,0 @@
-{
-  "extends": [
-    "@antfu",
-    "@unocss"
-  ],
-  "rules": {
-    "no-console": 1
-  }
-}

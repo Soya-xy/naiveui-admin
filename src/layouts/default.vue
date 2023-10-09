@@ -54,7 +54,7 @@ const height = computed(() => {
           }"
         >
           <p text-center leading-10>
-            Powered by Gin-Vue-Admin Copyright flipped-aurora团队
+            Powered by Soya
           </p>
         </n-layout-footer>
       </n-layout>
