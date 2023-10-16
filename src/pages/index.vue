@@ -23,4 +23,5 @@
 <route lang="yaml">
 meta:
   title: 首页
+  icon: i-mdi:android-head
 </route>

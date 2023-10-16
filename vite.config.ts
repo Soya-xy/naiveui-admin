@@ -56,6 +56,12 @@ export default ({ mode }: ConfigEnv) => {
       // https://github.com/hannoeru/vite-plugin-pages
       Pages({
         extensions: ['vue', 'md'],
+        extendRoute(route) {
+          return {
+            ...route,
+            componentPath: route.component.replace('/src/pages/', '').replace('.vue', ''),
+          }
+        },
       }),
 
       // https://github.com/JohnCampionJr/vite-plugin-vue-layouts

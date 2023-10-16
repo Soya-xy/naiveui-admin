@@ -69,5 +69,6 @@ async function handleSubmit() {
 
 <route lang="yaml">
 meta:
+  hiddenMenu: true
   layout: empty
 </route>

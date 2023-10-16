@@ -1,5 +1,5 @@
 SERVER=ld.io:5000/exar/
-REPOSITORY=ui-upgrade-app
+REPOSITORY=web-admin
 echo $1
 if [ $1 ]; then
     TAG=$1
