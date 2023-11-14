@@ -12,6 +12,7 @@ import {
 export default defineConfig({
   safelist: [
     'i-mdi:android-head',
+    'i-carbon:user-multiple',
   ],
   shortcuts: {
     'icon-btn': 'hover:text-blue-600 cursor-pointer',
@@ -28,23 +29,6 @@ export default defineConfig({
     'i-flex-col': 'inline-flex flex-col',
     'i-flex-col-stretch': 'i-flex-col items-stretch',
     'flex-1-hidden': 'flex-1 overflow-hidden',
-    'absolute-lt': 'absolute left-0 top-0',
-    'absolute-lb': 'absolute left-0 bottom-0',
-    'absolute-rt': 'absolute right-0 top-0',
-    'absolute-rb': 'absolute right-0 bottom-0',
-    'absolute-tl': 'absolute-lt',
-    'absolute-tr': 'absolute-rt',
-    'absolute-bl': 'absolute-lb',
-    'absolute-br': 'absolute-rb',
-    'absolute-center': 'absolute-lt flex-center wh-full',
-    'fixed-lt': 'fixed left-0 top-0',
-    'fixed-lb': 'fixed left-0 bottom-0',
-    'fixed-rt': 'fixed right-0 top-0',
-    'fixed-rb': 'fixed right-0 bottom-0',
-    'fixed-tl': 'fixed-lt',
-    'fixed-tr': 'fixed-rt',
-    'fixed-bl': 'fixed-lb',
-    'fixed-br': 'fixed-rb',
     'fixed-center': 'fixed-lt flex-center wh-full',
     'nowrap-hidden': 'whitespace-nowrap overflow-hidden',
     'ellipsis-text': 'nowrap-hidden text-ellipsis',
@@ -60,6 +44,7 @@ export default defineConfig({
     }),
     presetTypography(),
     presetWebFonts({
+      provider: 'bunny',
       fonts: {
         sans: 'DM Sans',
         serif: 'DM Serif Display',

@@ -8,6 +8,9 @@ dependencies:
   '@alova/adapter-axios':
     specifier: ^1.1.1
     version: 1.1.1
+  '@ldzn/login':
+    specifier: ^0.0.10
+    version: 0.0.10
   '@unhead/vue':
     specifier: ^1.7.4
     version: 1.7.4(vue@3.3.4)
@@ -504,7 +507,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
-    dev: true
 
   /@babel/template@7.22.15:
     resolution: {integrity: sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==}
@@ -905,6 +907,18 @@ packages:
   /@juggle/resize-observer@3.4.0:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
+
+  /@ldzn/js-captcha@0.0.10:
+    resolution: {integrity: sha512-fHuaX0JE9A16Cbfm+gZwEtMQXk+Hr8nVkWewEqvxcsMgJol8fQdbOt/jEi6ZzD/bzY7OVvVNYWbbEuqialuE3A==}
+    dev: false
+
+  /@ldzn/login@0.0.10:
+    resolution: {integrity: sha512-yVAkpDqI73F01Bi9p0xw+Vphm0XhiG1ec412RYRVRIxw0rGrb465gNJCHSoDz4vnuexCS3a6pJptmGQGdx1tyg==}
+    engines: {node: '>=14.18.0'}
+    dependencies:
+      '@ldzn/js-captcha': 0.0.10
+      quarkc: 1.0.40
+    dev: false
 
   /@mdit-vue/plugin-component@0.12.1:
     resolution: {integrity: sha512-L3elbvuKUufXwPLHrmJGd/ijd/QKxfcHXy3kRy4O+P7UIV7HSWePpfB0k+wWee+by3MviYYxjVAi392z+DGy3Q==}
@@ -4324,6 +4338,7 @@ packages:
   /iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
+    requiresBuild: true
     dependencies:
       safer-buffer: 2.1.2
     dev: true
@@ -5882,6 +5897,12 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /quarkc@1.0.40:
+    resolution: {integrity: sha512-wNYRV8pGKo/kq4APFwQgIurxKcu1uLDqB1ESLJGhiK60R0FBQR3VTcoVWp6Vbc8moX1UfaCrSC9PVl8lGZicRw==}
+    dependencies:
+      '@babel/runtime': 7.23.1
+    dev: false
+
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
@@ -5945,7 +5966,6 @@ packages:
 
   /regenerator-runtime@0.14.0:
     resolution: {integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==}
-    dev: true
 
   /regexp-tree@0.1.27:
     resolution: {integrity: sha512-iETxpjK6YoRWJG5o6hXLwvjYAoW+FEZn9os0PD/b6AP6xQwsa/Y7lCVgIixBbUPMfhu+i2LtdeAqVTgGlQarfA==}
@@ -6086,6 +6106,7 @@ packages:
 
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+    requiresBuild: true
     dev: true
     optional: true
 

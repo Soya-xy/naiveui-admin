@@ -4,5 +4,9 @@ interface ID {
   id: number
 }
 
-export const postData = (data: ID) => alovaInstance.Post('/app', data)
-export const getList = (params: ID) => alovaInstance.Get('/app', { params })
+const api = alovaInstance()
+const bffApi = alovaInstance('/bff')
+
+export const postData = (data: ID) => api.Post('/app', data)
+export const getList = (params: ID) => api.Get('/app', { params })
+export const getCamera = () => bffApi.Get('/data/camera')

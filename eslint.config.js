@@ -10,8 +10,6 @@ export default antfu(
     },
     ignores: [
       '.vscode',
-      '.storybook',
-      'patches',
     ],
   },
 )

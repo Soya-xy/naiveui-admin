@@ -6,11 +6,20 @@ import { RouterLink } from 'vue-router'
 import pages from 'virtual:generated-pages'
 import type { SideProps } from './types'
 
-interface Route extends Array<RouteRecordRaw> {
+type Route = {
   name: string
   componentPath: string
-  children: Route[]
-}
+  children?: Route[]
+  menuName?: string
+  menuIcon?: string
+  meta: {
+    title: string
+    icon: string
+    hiddenMenu: boolean
+    menuName?: string
+    menuIcon?: string
+  }
+} & RouteRecordRaw
 
 const props = withDefaults(defineProps<SideProps>(), {
   isCollapsed: false,
@@ -21,7 +30,10 @@ const props = withDefaults(defineProps<SideProps>(), {
 const route = useRoute()
 const activeKey = computed(() => (route.name as string))
 
-function renderIcon(icon: string) {
+function renderIcon(icon?: string) {
+  if (!icon)
+    return
+
   return () => h(NIcon, {
     class: icon,
   })
@@ -29,11 +41,13 @@ function renderIcon(icon: string) {
 const menuOptions = ref<Array<MenuOption | MenuGroupOption>>([])
 
 // 创建父子关系
-function createHierarchy(data: Route[], parentPath = '') {
+function createHierarchy(data: Route[], parentPath = ''): Route[] {
   const result: any[] = []
 
   data.forEach((item) => {
-    console.log("🚀 ~ file: Side.vue:36 ~ data.forEach ~ item:", item.componentPath.startsWith(parentPath))
+    if (item.meta?.hiddenMenu)
+      return
+
     if (item.componentPath.startsWith(parentPath)) {
       const path = item.componentPath.replace(parentPath, '').split('/')
       const name = path[0]
@@ -48,6 +62,12 @@ function createHierarchy(data: Route[], parentPath = '') {
         }
         else {
           const parentItem: any = { name, children: [] }
+
+          if (path[path.length - 1] === 'index') {
+            parentItem.menuName = item.meta?.menuName
+            parentItem.menuIcon = item.meta?.menuIcon
+          }
+
           parentItem.children.push(item)
           result.push(parentItem)
         }
@@ -56,35 +76,51 @@ function createHierarchy(data: Route[], parentPath = '') {
   })
 
   result.forEach((parent) => {
+    if (parent.children <= 0)
+      return
+
     parent.children = createHierarchy(parent.children, `${parentPath}${parent.name}/`)
   })
 
   return result
 }
 
-// 获取父子关系
-const result = createHierarchy(pages as unknown as Route[])
+// 获取父子关系并按照路径长短排序
+const routePage = (pages as Route[]).sort((a, b) => a.componentPath.split('/').length - b.componentPath.split('/').length)
 
-result.forEach(async (v) => {
-  console.log('🚀 ~ file: Side.vue:68 ~ result.forEach ~ v:', v)
-  if (!v?.meta?.hiddenMenu) {
-    menuOptions.value.push({
-      label: () =>
-        h(
-          RouterLink,
-          {
-            to: {
-              name: v.name,
-            },
-          },
-          { default: () => v?.meta?.title || '未设置菜单名称' },
-        ),
-      icon: renderIcon(v?.meta?.icon || 'i-mdi:alert'),
-      key: v.name,
-    })
-  }
-})
-console.log('🚀 ~ file: Side.vue:76 ~ result:', result)
+const result = createHierarchy(routePage)
+
+function createMenu(data: Route[]) {
+  const menu: Array<MenuOption | MenuGroupOption> = []
+  data.forEach((v) => {
+    if (!v?.meta?.hiddenMenu) {
+      const item: MenuOption | MenuGroupOption = {
+        label: () =>
+          v!.children!.length > 0
+            ? (v?.menuName || '未设置菜单名称')
+            : h(
+              RouterLink,
+              {
+                to: {
+                  name: v.name,
+                },
+              },
+              { default: () => v?.meta?.title || '未设置菜单名称' },
+            ),
+        icon: renderIcon(v.children!.length > 0 ? v?.menuIcon : v?.meta?.icon || 'i-mdi:alert'),
+        key: v.name,
+      }
+
+      if (v!.children!.length > 0)
+        item.children = createMenu(v.children!)
+
+      menu.push(item)
+    }
+  })
+  return menu
+}
+
+menuOptions.value = createMenu(result)
 </script>
 
 <template>

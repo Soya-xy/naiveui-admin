@@ -8,5 +8,9 @@
 </template>
 
 <route lang="yaml">
-menuName: 用户管理
+meta:
+  menuName: 用户管理
+  menuIcon: i-carbon:user-multiple
+  icon: i-carbon:user-multiple
+  title: 用户
 </route>
