@@ -6,12 +6,7 @@ import { storeToRefs } from 'pinia'
 const config = useConfigStore()
 const { theme: t } = storeToRefs(config)
 const theme = computed(() => (t.value.isDark ? darkTheme : null))
-watch(() => theme.value, () => {
-  console.log(theme.value)
-}, {
-  immediate: true,
-  deep: true,
-})
+
 const themeOverrides: GlobalThemeOverrides = {
   common: {
     primaryColor: config.theme.defaultColor,
