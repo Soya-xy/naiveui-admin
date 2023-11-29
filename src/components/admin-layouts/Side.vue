@@ -111,15 +111,14 @@ function createMenu(data: Route[]) {
         key: v.name,
       }
 
-      if (v!.children!.length > 0)
-        item.children = createMenu(v.children!)
+      if (v.children && v.children.length > 0)
+        item.children = createMenu(v.children)
 
       menu.push(item)
     }
   })
   return menu
 }
-
 menuOptions.value = createMenu(result)
 </script>
 
